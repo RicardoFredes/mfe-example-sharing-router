@@ -1,0 +1,26 @@
+{
+  "name": "appmax-poc-mfe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "host",
+    "remote1",
+    "remote2",
+    "remote3",
+    "remote4"
+  ],
+  "scripts": {
+    "remote1": "yarn workspace remote1 start-prod",
+    "remote2": "yarn workspace remote2 start-prod",
+    "remote3": "yarn workspace remote3 start-prod",
+    "remote4": "yarn workspace remote4 start-prod",
+    "host": "yarn workspace host start-prod",
+    "start-prod": "concurrently yarn:host yarn:remote1 yarn:remote2 yarn:remote3 yarn:remote4",
+    "dev": "concurrently yarn:host yarn:remote1 yarn:remote2 yarn:remote3 yarn:remote4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
